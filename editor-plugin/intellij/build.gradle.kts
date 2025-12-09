@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate("2024.2.3")
+        intellijIdeaUltimate("2025.3")
         bundledPlugin("JavaScript")
         instrumentationTools()
     }
@@ -41,6 +41,9 @@ tasks {
                 commandLine("bash", "-c", "cd ../.. && pnpm build && cp packages/language-server/dist/cypher-language-server.js ./editor-plugin/intellij")
             }
         }
+        from("src/main/resources/META-INF") {
+            into("${pluginName.get()}/META-INF")
+        }
         from(".") {
             include("*.js")
             into("cypher-lsp-support")
@@ -48,8 +51,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("242")
-        untilBuild.set("242.*")
+        sinceBuild.set("253")
+        untilBuild.set("253.*")
     }
 
     signPlugin {
