@@ -10,12 +10,22 @@ jobs:
   package-intellij-plugin:
     name: Package IntelliJ plugin and upload artifact
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: editor-plugin/intellij
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: .
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -28,6 +38,7 @@ jobs:
 
       - name: Build plugin
         run: ./gradlew buildPlugin
+        working-directory: editor-plugin/intellij
 
       - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
