@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate("2025.3")
+        intellijIdeaUltimate("2025.2")
         bundledPlugin("JavaScript")
         instrumentationTools()
     }
@@ -51,8 +51,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("253")
-        untilBuild.set("253.*")
+        sinceBuild.set("252")
+        untilBuild.set("252.*")
     }
 
     signPlugin {
