@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate("2024.2.3")
+        intellijIdeaUltimate("2025.3")
         bundledPlugin("JavaScript")
         instrumentationTools()
     }
